@@ -19,11 +19,26 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
 
-
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
 
         <title>메인 페이지</title>
 
         <style>
+            .fontTitle {
+                font-family: 'Jua', sans-serif;
+                font-size: 45pt;
+                text-align: center;
+                color: #2E3552;
+            }
+
+            .fontText {
+               font-family: 'Jua', sans-serif;
+                font-size: 25pt;
+                text-align: center;
+                color: #2E355A;
+            }
+
             .container {
                 width: 100%;
                 height: 100%;
@@ -44,7 +59,12 @@
             }
 
             main {
-                padding-top: 320px;
+                margin: 0 auto;
+                padding-top: 20%;
+            }
+
+            .buttonArea {
+                padding-top: 1%;
             }
 
             .button-2 {
@@ -102,10 +122,10 @@
     <body>
         <div class="container">
             <main>
-                <p>잭과 책나무</p>
-                <p>책을 쌓아서 잭이 거인의 성에 도달할 수 있게 도와주세요!</p>
+                <p class="fontTitle">잭과 책나무</p>
+                <p class="fontText">책을 쌓아서 잭이 거인의 성에 도달할 수 있게 도와주세요!</p>
             </main>
-            <div>
+            <div class="buttonArea">
                 <div class="button-2">
                     <div class="eff-2">
                         <a href="#"> 현재 상태 확인하기 </a>
