@@ -1,0 +1,134 @@
+<html lang="ko">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+        <title>메인 페이지</title>
+
+        <style>
+            .container {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            .container::after {
+                width: 100%;
+                height: 100%;
+                content: "";
+                background: url("https://cdn.pixabay.com/photo/2020/10/09/20/09/library-5641389_960_720.jpg");
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                opacity: 0.7;
+            }
+
+            main {
+                padding-top: 320px;
+            }
+
+            .button-2 {
+                width: 180px;
+                height: 50px;
+                border: 3px solid #34495e;
+                float: initial;
+                text-align: center;
+                cursor: pointer;
+                position: relative;
+                left: auto;
+                box-sizing: border-box;
+                overflow: hidden;
+                margin: 50px auto;
+            }
+
+            .button-2 a {
+                font-family: arial;
+                font-size: 16px;
+                color: #34495e;
+                text-decoration: none;
+                line-height: 50px;
+                transition: all .5s ease;
+                z-index: 2;
+                position: relative;
+
+            }
+
+            .eff-2 {
+                width: 180px;
+                height: 50px;
+                top: -50px;
+                background: #34495e;
+                position: absolute;
+                transition: all .5s ease;
+                z-index: 1;
+            }
+
+            .button-2:hover .eff-2 {
+                top: 0;
+            }
+
+            .button-2:hover a {
+                color: #fff;
+            }
+
+        </style>
+
+        <script>
+
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <main>
+                <p>잭과 책나무</p>
+                <p>책을 쌓아서 잭이 거인의 성에 도달할 수 있게 도와주세요!</p>
+            </main>
+            <div>
+                <div class="button-2">
+                    <div class="eff-2">
+                        <a href="#"> 현재 상태 확인하기 </a>
+                    </div>
+                </div>
+                <div class="button-2">
+                    <div class="eff-2">
+                        <a href="#"> 책나무 기르기 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
