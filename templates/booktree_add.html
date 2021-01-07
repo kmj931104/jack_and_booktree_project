@@ -24,9 +24,17 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
         <title>책나무 기르기 추가하기 페이지</title>
 
         <style>
+            .fontHead {
+                font-family: 'Jua', sans-serif;
+                font-size: 35pt;
+                text-align: center;
+            }
+
             * {
                 background-color: #F6EDDC;
             }
@@ -76,7 +84,7 @@
             }
 
             .wrap {
-                margin-top: 15px;
+                margin-top: 30px;
             }
 
             .add-box {
@@ -91,7 +99,6 @@
                 margin: 0 auto;
             }
 
-            
 
         </style>
 
@@ -109,12 +116,12 @@
 
     <body>
         <div id="new_book" class="wrap">
-            <p>책을 등록해서 잭의 나무를 성장시켜 주세요</p>
+            <p class="fontHead">책을 등록해서 잭의 나무를 성장시켜 보아요♥</p>
             <div id="add_book" class="add-box">
                 <div class="image-box" id="bookCover">
-                    <p>test</p>
+                    <p>책의 표지가 들어갈 자리입니다</p>
                 </div>
-                <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
+
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="title">책 제목</span>
                     <input type="text" class="form-control" placeholder="책 제목을 입력해주세요" aria-label="Username"
@@ -130,6 +137,7 @@
                     <input type="text" class="form-control" placeholder="ISBN을 입력해주세요" aria-label="Username"
                            aria-describedby="basic-addon1">
                 </div>
+                <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
                 <button type="button" class="btn btn-outline-secondary" onclick="bookCover()">책 이미지 찾아보기</button>
                 <div class="input-group">
                     <span class="input-group-text" id="sentence">마음에 드는 구절</span>
