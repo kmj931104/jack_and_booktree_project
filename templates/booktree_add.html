@@ -19,20 +19,10 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <title>책나무 기르기 추가하기 페이지</title>
 
@@ -86,14 +76,21 @@
             }
 
             .image-box {
-
+                width: 188.5px;
+                height: 264px;
+                text-align: center;
+                margin: 0 auto;
             }
 
         </style>
 
         <script>
             function addBooktree() {
-                alert('입력되었습니다');
+                alert('잭의 책나무가 한 뼘 자라났습니다!');
+            }
+
+            function bookCover() {
+                alert('책 표지가 입력되었습니다!')
             }
 
         </script>
@@ -103,9 +100,10 @@
         <div id="new_book">
             <p>책을 등록해서 잭의 나무를 성장시켜 주세요</p>
             <div id="add_book">
-                <div class="image-box">
-                    <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
+                <div class="image-box" id="bookCover">
+                    <p>test</p>
                 </div>
+                <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="title">책 제목</span>
                     <input type="text" class="form-control" placeholder="책 제목을 입력해주세요" aria-label="Username"
@@ -121,7 +119,7 @@
                     <input type="text" class="form-control" placeholder="ISBN을 입력해주세요" aria-label="Username"
                            aria-describedby="basic-addon1">
                 </div>
-                <button type="button" class="btn btn-outline-secondary">책 이미지 찾아보기</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="bookCover()">책 이미지 찾아보기</button>
                 <div class="input-group">
                     <span class="input-group-text" id="sentence">마음에 드는 구절</span>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
@@ -130,6 +128,9 @@
                 <div class="input-group">
                     <span class="input-group-text" id="comment">소감</span>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <div>
+                    <p>완독일: <input type="date" id="datePicker"></p>
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="rate">평점</label>
@@ -144,7 +145,7 @@
                 </div>
                 <div class="button-2">
                     <div class="eff-2">
-                        <a onclick="addBooktree()"> 책나무 기르기 </a>
+                        <a href="#" onclick="addBooktree()"> 책나무 기르기 </a>
                     </div>
                 </div>
 
