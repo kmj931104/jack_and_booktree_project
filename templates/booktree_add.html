@@ -37,16 +37,117 @@
         <title>책나무 기르기 추가하기 페이지</title>
 
         <style>
+            * {
+                background-color: #F6EDDC;
+            }
 
+            .button-2 {
+                width: 180px;
+                height: 50px;
+                border: 3px solid #34495e;
+                float: initial;
+                text-align: center;
+                cursor: pointer;
+                position: relative;
+                left: auto;
+                box-sizing: border-box;
+                overflow: hidden;
+                margin: 50px auto;
+            }
+
+            .button-2 a {
+                font-family: arial;
+                font-size: 16px;
+                color: #34495e;
+                text-decoration: none;
+                line-height: 50px;
+                transition: all .5s ease;
+                z-index: 2;
+                position: relative;
+
+            }
+
+            .eff-2 {
+                width: 180px;
+                height: 50px;
+                top: -50px;
+                background: #34495e;
+                position: absolute;
+                transition: all .5s ease;
+                z-index: 1;
+            }
+
+            .button-2:hover .eff-2 {
+                top: 0;
+            }
+
+            .button-2:hover a {
+                color: #fff;
+            }
+
+            .image-box {
+
+            }
 
         </style>
 
         <script>
-
+            function addBooktree() {
+                alert('입력되었습니다');
+            }
 
         </script>
     </head>
 
-    <body >
+    <body>
+        <div id="new_book">
+            <p>책을 등록해서 잭의 나무를 성장시켜 주세요</p>
+            <div id="add_book">
+                <div class="image-box">
+                    <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="title">책 제목</span>
+                    <input type="text" class="form-control" placeholder="책 제목을 입력해주세요" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="Author">저자 이름</span>
+                    <input type="text" class="form-control" placeholder="저자 이름을 입력해주세요" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="isbn">ISBN</span>
+                    <input type="text" class="form-control" placeholder="ISBN을 입력해주세요" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+                <button type="button" class="btn btn-outline-secondary">책 이미지 찾아보기</button>
+                <div class="input-group">
+                    <span class="input-group-text" id="sentence">마음에 드는 구절</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text" id="comment">소감</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="rate">평점</label>
+                    <select class="form-select" id="rate">
+                        <option selected>평점을 골라주세요</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">4</option>
+                        <option value="3">5</option>
+                    </select>
+                </div>
+                <div class="button-2">
+                    <div class="eff-2">
+                        <a onclick="addBooktree()"> 책나무 기르기 </a>
+                    </div>
+                </div>
 
+            </div>
+        </div>
     </body>
