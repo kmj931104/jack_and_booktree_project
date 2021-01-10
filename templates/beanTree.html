@@ -1,0 +1,89 @@
+<!Doctype html>
+<html lang="ko">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+
+        <title>Title</title>
+
+        <style>
+            .top-fixed {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 50px;
+            }
+
+            .top-content {
+                background-color: aquamarine;
+                width: 100%;
+                height: 100%;
+            }
+
+            #bean-tree-container {
+                min-height: 1000px;
+                margin-top: 50px;
+                background-color: pink;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+
+            .bean-block {
+                width: 200px;
+                border-radius: 20px;
+                height: 100px;
+                background-color: blue;
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bean-block-content {
+                text-align: center;
+                height: fit-content;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="top-fixed">
+            <div class="top-content">
+
+            </div>
+        </div>
+        <div id="bean-tree-container">
+
+        </div>
+        <script>
+            function addBeanBlock(title, height, blockColor, textColor) {
+                let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
+                                    <h1 class="bean-block-content" style="color: ${textColor};">${title}</h1>
+                                </div>`
+                $('#bean-tree-container').append(tempHtml);
+            }
+
+            addBeanBlock('Happy', 200, '#123456', 'white');
+            addBeanBlock('New', 100, '#654321', '#000000');
+            addBeanBlock('Year', 300, '#436521', 'white');
+        </script>
+    </body>
+</html>
