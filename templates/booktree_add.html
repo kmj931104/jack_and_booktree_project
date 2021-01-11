@@ -17,16 +17,22 @@
         <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 
         <title>책나무 기르기 책 추가하기 페이지</title>
         <!-- style -->
         <style type="text/css">
-
-
             .fontHead {
                 font-family: 'Jua', sans-serif;
                 font-size: 35pt;
                 text-align: center;
+            }
+
+            .fontContent {
+                font-family: 'Sunflower', sans-serif;
+                font-size: 15pt;
+                font-weight: bold;
             }
 
             * {
@@ -87,8 +93,9 @@
             }
 
             .searchISBN {
-                margin-left: 70%;
-                margin-bottom: 20px;
+                margin-top: 13px;
+                margin-left: 72.5%;
+                margin-bottom: 10px;
             }
 
             .image-box {
@@ -96,20 +103,27 @@
                 height: 264px;
                 text-align: center;
                 margin: 0 auto;
+                border-color: 2px solid #CED4DA;
             }
 
+
+
             input[type=text] {
-                width: 100%;
+                width: 70%;
                 padding: 12px 20px;
-                margin: 8px 0;
+                margin: 0px 30%;
                 box-sizing: border-box;
                 background-color: white;
+                border-radius: 4px;
+                border-color: #CED4DA;
+                border-top: #CED4DA;
+                border-left: #CED4DA;
             }
 
             input[type=date] {
-                width: 100%;
+                width: 70%;
                 padding: 12px 20px;
-                margin: 8px 0;
+                margin: 0 30%;
                 box-sizing: border-box;
                 border-color: #CED4DA;
                 border-width: 1.5px;
@@ -120,16 +134,18 @@
             }
 
             select {
-                width: 100%;
+                width: 70%;
                 padding: 16px 20px;
+                margin: 0px 30%;
                 border-radius: 4px;
                 background-color: white;
                 border-color: #CED4DA;
             }
 
             textarea {
-                width: 100%;
+                width: 70%;
                 height: 150px;
+                margin: 0 30%;
                 padding: 12px 20px;
                 box-sizing: border-box;
                 border: 2px solid #ccc;
@@ -165,12 +181,11 @@
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            alert(response["msg"]);
+                            alert('성공');
                         }
                     }
                 });
 
-                alert('잭의 책나무가 한 뼘 자라났습니다!');
             }
 
             function bookInfo() {
@@ -184,24 +199,26 @@
             <p class="fontHead"> 책을 등록해서 잭의 나무를 성장시켜 보아요♥</p>
             <div id="add_book" class="add-box">
                 <div class="image-box" id="bookCover">
-                    <img class="image-box" src="#" alt="책 이미지가 들어갈 자리입니다.">
+                    <img src="#" alt="책 이미지가 들어갈 자리입니다.">
                 </div>
-
-
                 <div>
-                    <span id="title">책 제목</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="title" class="fontContent">책 제목</span>
                     <input type="text" placeholder="책 제목을 입력해주세요">
                 </div>
                 <div>
-                    <span id="author">저자 이름</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="author" class="fontContent">저자 이름</span>
                     <input type="text" placeholder="저자 이름을 입력해주세요">
                 </div>
                 <div>
-                    <span id="page">Page</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="page" class="fontContent">Page</span>
                     <input type="text" placeholder="쪽수를 입력해주세요">
                 </div>
                 <div>
-                    <span id="isbn">ISBN</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="isbn" class="fontContent">ISBN</span>
                     <input type="text" placeholder="ISBN을 입력해주세요">
                 </div>
                 <div>
@@ -211,19 +228,23 @@
                     </span>
                 </div>
                 <div>
-                    <span id="sentence">마음에 드는 구절</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="sentence" class="fontContent">마음에 드는 구절</span>
                     <textarea></textarea>
                 </div>
                 <div>
-                    <span id="comment">소감</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="comment" class="fontContent">소감</span>
                     <textarea></textarea>
                 </div>
                 <div>
-                    <span id="date">완독일</span>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span id="date" class="fontContent">완독일</span>
                     <input type="date" id="datePicker">
                 </div>
                 <div>
-                    <lable for="rate">평점</lable>
+                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <lable for="rate" class="fontContent">평점</lable>
                     <select id="rate">
                         <option selected>평점을 골라주세요</option>
                         <option value="1">1</option>
