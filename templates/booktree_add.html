@@ -92,14 +92,61 @@
                 margin: 0 auto;
             }
 
+            .searchISBN {
+                margin-left: 70%;
+                margin-bottom: 20px;
+            }
+
             .image-box {
                 width: 188.5px;
                 height: 264px;
                 text-align: center;
                 margin: 0 auto;
+
             }
 
+            .image-box-text {
+                margin-top: 40%;
+            }
 
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            input[type=date] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border-color: #CED4DA;
+                border-width: 1.5px;
+                border-radius: 4px;
+                border-top: #CED4DA;
+                border-left: #CED4DA;
+                background-color: white;
+            }
+
+            select {
+                width: 100%;
+                padding: 16px 20px;
+                border-radius: 4px;
+                background-color: white;
+                border-color: #CED4DA;
+            }
+
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                resize: none;
+            }
         </style>
 
         <script>
@@ -107,8 +154,8 @@
                 alert('잭의 책나무가 한 뼘 자라났습니다!');
             }
 
-            function bookCover() {
-                alert('책 표지가 입력되었습니다!')
+            function bookInfo() {
+                alert('책 정보가 입력되었습니다!')
             }
 
         </script>
@@ -119,9 +166,12 @@
             <p class="fontHead">책을 등록해서 잭의 나무를 성장시켜 보아요♥</p>
             <div id="add_book" class="add-box">
                 <div class="image-box" id="bookCover">
-                    <p>책의 표지가 들어갈 자리입니다</p>
+                    <p class="image-box-text">책의 표지가 들어갈<br> 자리입니다</p>
                 </div>
 
+                <div>
+
+                </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="title">책 제목</span>
                     <input type="text" class="form-control" placeholder="책 제목을 입력해주세요" aria-label="Username"
@@ -133,12 +183,19 @@
                            aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
+                    <span class="input-group-text" id="page">Page</span>
+                    <input type="text" class="form-control" placeholder="쪽수를 입력해주세요" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
                     <span class="input-group-text" id="isbn">ISBN</span>
                     <input type="text" class="form-control" placeholder="ISBN을 입력해주세요" aria-label="Username"
                            aria-describedby="basic-addon1">
                 </div>
-                <p> ISBN을 입력해서 책의 이미지를 불러와주세요! </p>
-                <button type="button" class="btn btn-outline-secondary" onclick="bookCover()">책 이미지 찾아보기</button>
+                <span>
+                <button type="button" class="btn btn-outline-secondary searchISBN"
+                        onclick="bookInfo()">ISBN을 이용해 책 정보 입력하기</button>
+                </span>
                 <div class="input-group">
                     <span class="input-group-text" id="sentence">마음에 드는 구절</span>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
@@ -148,12 +205,15 @@
                     <span class="input-group-text" id="comment">소감</span>
                     <textarea class="form-control" aria-label="With textarea"></textarea>
                 </div>
-                <div>
-                    <p>완독일: <input type="date" id="datePicker"></p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="date">완독일</span>
+                    <input type="date" id="datePicker" class="form-control">
                 </div>
+
+
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="rate">평점</label>
-                    <select class="form-select" id="rate">
+                    <select class="form-control" id="rate">
                         <option selected>평점을 골라주세요</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -162,12 +222,12 @@
                         <option value="3">5</option>
                     </select>
                 </div>
-                <div class="button-2">
-                    <div class="eff-2">
-                        <a href="#" onclick="addBooktree()"> 책나무 기르기 </a>
-                    </div>
-                </div>
-
             </div>
+            <div class="button-2">
+                <div class="eff-2">
+                    <a href="#" onclick="addBooktree()"> 책나무 기르기 </a>
+                </div>
+            </div>
+        </div>
         </div>
     </body>
