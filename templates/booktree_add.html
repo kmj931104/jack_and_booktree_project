@@ -103,9 +103,7 @@
                 height: 264px;
                 text-align: center;
                 margin: 0 auto;
-                border-color: 2px solid #CED4DA;
             }
-
 
 
             input[type=text] {
@@ -168,7 +166,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/books",
+                    url: "/booksadd",
                     data: {
                         'title': title,
                         'author': author,
@@ -181,7 +179,7 @@
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            alert('성공');
+                            alert(response["msg"]);
                         }
                     }
                 });
@@ -203,23 +201,23 @@
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="title" class="fontContent">책 제목</span>
-                    <input type="text" placeholder="책 제목을 입력해주세요">
+                    <span class="fontContent">책 제목</span>
+                    <input id="title" type="text" placeholder="책 제목을 입력해주세요">
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="author" class="fontContent">저자 이름</span>
-                    <input type="text" placeholder="저자 이름을 입력해주세요">
+                    <span class="fontContent">저자 이름</span>
+                    <input id="author" type="text" placeholder="저자 이름을 입력해주세요">
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="page" class="fontContent">Page</span>
-                    <input type="text" placeholder="쪽수를 입력해주세요">
+                    <span class="fontContent">Page</span>
+                    <input id="page" type="text" placeholder="쪽수를 입력해주세요">
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="isbn" class="fontContent">ISBN</span>
-                    <input type="text" placeholder="ISBN을 입력해주세요">
+                    <span class="fontContent">ISBN</span>
+                    <input id="isbn" type="text" placeholder="ISBN을 입력해주세요">
                 </div>
                 <div>
                     <span>
@@ -229,18 +227,18 @@
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="sentence" class="fontContent">마음에 드는 구절</span>
-                    <textarea></textarea>
+                    <span class="fontContent">마음에 드는 구절</span>
+                    <textarea id="sentence"></textarea>
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="comment" class="fontContent">소감</span>
-                    <textarea></textarea>
+                    <span class="fontContent">소감</span>
+                    <textarea id="comment"></textarea>
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
-                    <span id="date" class="fontContent">완독일</span>
-                    <input type="date" id="datePicker">
+                    <span class="fontContent">완독일</span>
+                    <input type="date" id="date">
                 </div>
                 <div>
                     <span><img src="books_covers_2.png" width="40px" height="35px"></span>
