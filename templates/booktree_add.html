@@ -17,8 +17,9 @@
         <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
+
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
         <title>책나무 기르기 책 추가하기 페이지</title>
         <!-- style -->
@@ -30,10 +31,11 @@
             }
 
             .fontContent {
-                font-family: 'Sunflower', sans-serif;
+                font-family: 'Noto Sans KR', sans-serif;
                 font-size: 15pt;
-                font-weight: bold;
+                font-weight: initial;
             }
+
 
             * {
                 background-color: #F6EDDC;
@@ -103,8 +105,12 @@
                 height: 264px;
                 text-align: center;
                 margin: 0 auto;
+                background-color: white;
             }
 
+            .desc {
+                padding-top: 12px;
+            }
 
             input[type=text] {
                 width: 70%;
@@ -255,7 +261,7 @@
                 </div>
                 <div class="button-2">
                     <div class="eff-2">
-                        <a href="#" onclick="addBooktree()"> 책나무 기르기 </a>
+                        <a href="/booktree" onclick="addBooktree()"> 책나무 기르기 </a>
                     </div>
                 </div>
 
