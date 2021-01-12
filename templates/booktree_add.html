@@ -87,26 +87,14 @@
 
             .wrap {
                 margin-top: 30px;
+                margin-bottom: 30px;
             }
 
             .add-box {
-                width: 945px;
+                width: 900px;
                 margin: 0 auto;
+                padding-top: 30px;
             }
-
-            .searchISBN {
-                margin-top: 13px;
-                margin-left: 72.5%;
-                margin-bottom: 10px;
-            }
-
-            .image-box {
-                width: 188.5px;
-                height: 264px;
-                text-align: center;
-                margin: 0 auto;
-            }
-
 
             input[type=text] {
                 width: 70%;
@@ -119,6 +107,7 @@
                 border-top: #CED4DA;
                 border-left: #CED4DA;
             }
+
 
             input[type=date] {
                 width: 70%;
@@ -181,54 +170,11 @@
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            alert(response["msg"]);
+                            alert(response['msg']);
                         }
                     }
                 });
 
-            }
-
-            function bookImage() {
-                let isbn = $('#isbn').val();
-
-                $.ajax({
-                    type: "POST",
-                    url: "/booksadd/search",
-                    data: {
-                        'isbn': isbn
-                    },
-                    success: function (response) {
-                        if (response['result'] == 'success') {
-                            alert(response["msg"]);
-                        }
-                    }
-                })
-            }
-
-            function showBookImage() {
-                $.ajax({
-                    type: "GET",
-                    url: "/booksadd/search",
-                    data: {},
-                    success: function (response) {
-                        if (response['result'] == 'success') {
-                            let infos = response['infos'];
-                            for (let i = 0; i < infos.length; i++) {
-                                let info = infos[i];
-
-                                let imageUrl = info['image'];
-
-                                let tempHtml1 = `<img src="${imageUrl}" alt="책 이미지가 들어갈 자리입니다.">`;
-
-                                $('#bookCover').replaceWith(tempHtml1);
-                            }
-                        }
-                    }
-                })
-            }
-
-            function bookImageReload() {
-                $('#bookCover').load(window.location.href + '#bookCover');
             }
 
 
@@ -238,55 +184,47 @@
     <body>
         <div id="adding_book_page" class="wrap">
             <p class="fontHead"> 책을 등록해서 잭의 나무를 성장시켜 보아요♥</p>
+            <p class="fontHead" style="font-size: 20pt;"> 잭이 읽은 책은 어떤 책인가요?</p>
             <div id="add_book" class="add-box">
                 <div id="book-infos">
-                    <div class="image-box" id="bookCover">
-                        <img src="#" alt="책 이미지가 들어갈 자리입니다.">
-                    </div>
                     <div>
-                        <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                        <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                         <span class="fontContent">책 제목</span>
                         <input id="title" type="text" placeholder="책 제목을 입력해주세요">
                     </div>
                     <div>
-                        <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                        <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                         <span class="fontContent">저자 이름</span>
                         <input id="author" type="text" placeholder="저자 이름을 입력해주세요">
                     </div>
                     <div>
-                        <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                        <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                         <span class="fontContent">Page</span>
                         <input id="page" type="text" placeholder="쪽수를 입력해주세요">
                     </div>
                     <div>
-                        <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                        <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                         <span class="fontContent">ISBN</span>
-                        <input id="isbn" type="text" placeholder="ISBN을 입력해주세요">
+                        <input id="isbn" type="text" minlength="10" placeholder="ISBN을 입력해주세요">
                     </div>
                 </div>
                 <div>
-                    <span>
-                        <button type="button" class="btn btn-outline-secondary searchISBN"
-                                onclick="bookImage()">ISBN을 이용해 책 사진 입력하기</button>
-                    </span>
-                </div>
-                <div>
-                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                     <span class="fontContent">마음에 드는 구절</span>
                     <textarea id="sentence"></textarea>
                 </div>
                 <div>
-                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                     <span class="fontContent">소감</span>
                     <textarea id="comment"></textarea>
                 </div>
                 <div>
-                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                     <span class="fontContent">완독일</span>
                     <input type="date" id="date">
                 </div>
                 <div>
-                    <span><img src="books_covers_2.png" width="40px" height="35px"></span>
+                    <span><img src="/static/books_covers_2.png" width="40px" height="35px"></span>
                     <lable for="rate" class="fontContent">평점</lable>
                     <select id="rate">
                         <option selected>평점을 골라주세요</option>
