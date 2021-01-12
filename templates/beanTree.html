@@ -62,6 +62,11 @@
                 height: fit-content;
             }
         </style>
+        <script>
+            $(document).ready(function () {
+
+            })
+        </script>
 
     </head>
     <body>
@@ -74,6 +79,29 @@
 
         </div>
         <script>
+            function BeanBlockInfo() {
+                $.ajax({
+                    type: "GET",
+                    url: "/booksadd",
+                    data: {},
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            let infos = response['infos'];
+                            for (let i = 0; i < infos.length; i++) {
+                                let info = infos[i];
+
+                                let title = info['title'];
+                                let page = info['page'];
+                                let height = page * 0.1;
+
+                                addBeanBlock(title, height, blockColor, textColor);
+                            }
+                        }
+                    }
+                })
+            }
+
+
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
                                     <h1 class="bean-block-content" style="color: ${textColor};">${title}</h1>
@@ -81,9 +109,9 @@
                 $('#bean-tree-container').append(tempHtml);
             }
 
-            addBeanBlock('Happy', 200, '#123456', 'white');
-            addBeanBlock('New', 100, '#654321', '#000000');
-            addBeanBlock('Year', 300, '#436521', 'white');
+            {#addBeanBlock('Happy', 200, '#123456', 'white');#}
+            {#addBeanBlock('New', 100, '#654321', '#000000');#}
+            {#addBeanBlock('Year', 300, '#436521', 'white');#}
         </script>
     </body>
 </html>
