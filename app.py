@@ -30,7 +30,17 @@ def adding_book_tree():
     date = request.form['date']
     rate = request.form['rate']
 
-    doc = {
+    url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url, headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    image = soup.select_one('#CoverMainImage').get("src")
+
+    book = {
+        'image': image,
         'title': title,
         'author': author,
         'page': page,
@@ -41,43 +51,26 @@ def adding_book_tree():
         'rate': rate
     }
 
-    db.booktree.insert_one(doc)
+    db.booktree.insert_one(book)
+
     return jsonify({'result': 'success', 'msg': '잭의 책나무가 한뼘 자라났습니다!'})
 
 
-@app.route('/booksadd/search', methods=['POST'])
-def searching_book_image():
-    isbn = request.form['isbn']
+@app.route('/booksadd', methods=["GET"])
+def books_info():
+    infos = list(db.booktree.find({}, {'_id':False}))
 
-    url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url, headers=headers)
-    soup = BeautifulSoup(data.text, 'html.parser')
-
-    image = soup.select_one('#CoverMainImage').get("src")
-
-
-    info = {
-        'image': image,
-        'isbn': isbn
-    }
-
-    db.bookinfo.insert_one(info)
-
-    return jsonify({'result': 'success', 'msg': '책 이미지 가져오기 성공!'})
-
-@app.route('/booksadd/search', methods=['GET'])
-def find_book_image():
-    infos = list(db.bookinfo.find({}, {'_id': False}))
-
-    return jsonify({'result': 'success', 'images':infos})
+    return jsonify({'result':'success', 'infos':infos})
 
 
 @app.route('/booktree')
 def book_tree_now():
     return render_template('beanTree.html')
+
+
+@app.route('/bookregister')
+def book_tree_register():
+    return render_template('booktree_now.html')
 
 
 if __name__ == '__main__':
