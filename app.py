@@ -56,13 +56,13 @@ def searching_book_info():
     data = requests.get(url, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
-    image = soup.select_one('#CoverMainImage')
+    image = soup.select_one('#CoverMainImage').get("src")
     title = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li:nth-child(1) > div > a.Ere_bo_title')
+        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li:nth-child(1) > div > a.Ere_bo_title').text
     author = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li.Ere_sub2_title > a:nth-child(1)')
+        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li.Ere_sub2_title > a:nth-child(1)').text
     page = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_middlewrap > div:nth-child(1) > div.Ere_prod_mconts_R > div.conts_info_list1 > ul > li:nth-child(1)')
+        '#Ere_prod_allwrap > div.Ere_prod_middlewrap > div:nth-child(1) > div.Ere_prod_mconts_R > div.conts_info_list1 > ul > li:nth-child(1)').text
 
 
     info = {
