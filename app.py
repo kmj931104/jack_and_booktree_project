@@ -46,7 +46,7 @@ def adding_book_tree():
 
 
 @app.route('/booksadd/search', methods=['POST'])
-def searching_book_info():
+def searching_book_image():
     isbn = request.form['isbn']
 
     url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
@@ -57,24 +57,22 @@ def searching_book_info():
     soup = BeautifulSoup(data.text, 'html.parser')
 
     image = soup.select_one('#CoverMainImage').get("src")
-    title = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li:nth-child(1) > div > a.Ere_bo_title').text
-    author = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_topwrap > div.Ere_prod_titlewrap > div.left > div > ul > li.Ere_sub2_title > a:nth-child(1)').text
-    page = soup.select_one(
-        '#Ere_prod_allwrap > div.Ere_prod_middlewrap > div:nth-child(1) > div.Ere_prod_mconts_R > div.conts_info_list1 > ul > li:nth-child(1)').text
 
 
     info = {
         'image': image,
-        'title': title,
-        'author': author,
-        'page': page
+        'isbn': isbn
     }
 
     db.bookinfo.insert_one(info)
 
-    return jsonify({'result': 'success', 'msg': '책 정보 가져오기 성공!'})
+    return jsonify({'result': 'success', 'msg': '책 이미지 가져오기 성공!'})
+
+@app.route('/booksadd/search', methods=['GET'])
+def find_book_image():
+    infos = list(db.bookinfo.find({}, {'_id': False}))
+
+    return jsonify({'result': 'success', 'images':infos})
 
 
 @app.route('/booktree')
