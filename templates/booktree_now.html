@@ -22,7 +22,10 @@
         <title>등록한 책들 확인하기</title>
 
         <style>
-
+            img {
+                position: absolute;
+                width: 100%;
+            }
 
         </style>
 
@@ -31,6 +34,36 @@
         </script>
     </head>
 
-    <body >
+    <body>
+        <div id="bookReg">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4" style="position: relative">
+                        <img src="https://image.aladin.co.kr/product/25455/72/cover500/k322633613_1.jpg"
+                             alt="책 표지 사진입니다.">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" id="bookTitle"> Title &nbsp;&nbsp; <span style="font-size: 11pt;"
+                                                                                            id="bookAuthor"> author </span>
+                            </h5>
+                            <p class="card-text" id="sentence" style="font-style: italic">This is a wider card with
+                                supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <p class="card-text" id="comment">This is a wider card with supporting text below as a
+                                natural lead-in to
+                                additional content. This content is a little bit longer.This is a wider card with
+                                supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer additional content. This content
+                                is a little bit longer.This is a wider card with supporting text below as a natural
+                                lead-in to
+                                additional content. This content is a little bit longer</p>
+                            <p class="card-text" style="text-align: center"><small class="text-muted">2021-01-21 &nbsp;&nbsp;
+                                <span>평점: &nbsp;</span><span> 4/5 </span></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
