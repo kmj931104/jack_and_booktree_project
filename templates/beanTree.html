@@ -64,7 +64,7 @@
         </style>
         <script>
             $(document).ready(function () {
-
+                BeanBlockInfo();
             })
         </script>
 
@@ -94,14 +94,15 @@
                                 let page = info['page'];
                                 let height = page * 0.1;
 
+                                let blockColor = "#" + Math.round(Math.random()*0xFFFFFF).toString(16);
+                                let textColor = "#" + Math.round(Math.random()*0xFFFFFF).toString(16);
+
                                 addBeanBlock(title, height, blockColor, textColor);
                             }
                         }
                     }
                 })
             }
-
-
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
                                     <h1 class="bean-block-content" style="color: ${textColor};">${title}</h1>
