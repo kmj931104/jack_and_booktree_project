@@ -56,7 +56,7 @@ def adding_book_tree():
     return jsonify({'result': 'success', 'msg': '잭의 책나무가 한뼘 자라났습니다!'})
 
 
-@app.route('/booksadd', methods=["GET"])
+@app.route('/beantree', methods=["GET"])
 def books_info():
     infos = list(db.booktree.find({}, {'_id':False}))
 
@@ -71,6 +71,7 @@ def book_tree_now():
 @app.route('/bookregister')
 def book_tree_register():
     return render_template('booktree_now.html')
+
 
 
 if __name__ == '__main__':
