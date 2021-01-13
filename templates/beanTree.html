@@ -17,6 +17,9 @@
                 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
                 crossorigin="anonymous"></script>
 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
+
         <title>책나무 현재 상태 확인하기 페이지</title>
 
         <style>
@@ -41,7 +44,9 @@
                 display: flex;
                 flex-direction: column-reverse;
                 align-items: center;
+                font-family: 'Jua', sans-serif;
             }
+
 
             .bean-block {
                 width: 200px;
@@ -60,7 +65,59 @@
             .bean-block-content {
                 text-align: center;
                 height: fit-content;
+                font-size: 15pt;
+                padding-top: 5px;
             }
+
+            .buttonArea {
+                padding-top: 1%;
+            }
+
+            .button-2 {
+                width: 180px;
+                height: 50px;
+                border: 3px solid #34495e;
+                float: initial;
+                text-align: center;
+                cursor: pointer;
+                position: relative;
+                left: auto;
+                box-sizing: border-box;
+                overflow: hidden;
+                margin: 50px auto;
+            }
+
+            .button-2 a {
+                font-family: arial;
+                font-size: 16px;
+                color: #34495e;
+                text-decoration: none;
+                line-height: 50px;
+                transition: all .5s ease;
+                z-index: 2;
+                position: relative;
+
+            }
+
+            .eff-2 {
+                width: 180px;
+                height: 50px;
+                top: -50px;
+                background: #34495e;
+                position: absolute;
+                transition: all .5s ease;
+                z-index: 1;
+            }
+
+            .button-2:hover .eff-2 {
+                top: 0;
+            }
+
+            .button-2:hover a {
+                color: #fff;
+            }
+
+
         </style>
         <script>
             $(document).ready(function () {
@@ -72,7 +129,11 @@
     <body>
         <div class="top-fixed">
             <div class="top-content">
-
+                <div class="button-2">
+                    <div class="eff-2">
+                        <a href="/bookregister"> 책정보 자세히보기 </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="bean-tree-container">
@@ -82,7 +143,7 @@
             function BeanBlockInfo() {
                 $.ajax({
                     type: "GET",
-                    url: "/booksadd",
+                    url: "/beantree",
                     data: {},
                     success: function (response) {
                         if (response["result"] == "success") {
@@ -94,8 +155,8 @@
                                 let page = info['page'];
                                 let height = page * 0.1;
 
-                                let blockColor = "#" + Math.round(Math.random()*0xFFFFFF).toString(16);
-                                let textColor = "#" + Math.round(Math.random()*0xFFFFFF).toString(16);
+                                let blockColor = "#" + Math.round(Math.random() * 0xFFFFFF).toString(16);
+                                let textColor = "#" + Math.round(Math.random() * 0xFFFFFF).toString(16);
 
                                 addBeanBlock(title, height, blockColor, textColor);
                             }
@@ -103,6 +164,7 @@
                     }
                 })
             }
+
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
                                     <h1 class="bean-block-content" style="color: ${textColor};">${title}</h1>
