@@ -171,6 +171,7 @@
                     success: function (response) {
                         if (response['result'] == 'success') {
                             alert(response['msg']);
+                            location.href="/booktree"
                         }
                     }
                 });
@@ -238,7 +239,7 @@
                 </div>
                 <div class="button-2">
                     <div class="eff-2">
-                        <a href="/booktree" onclick="addBooktree()"> 책나무 기르기 </a>
+                        <button type="button" onclick="addBooktree()">책나무 기르기</button>
                     </div>
                 </div>
 
