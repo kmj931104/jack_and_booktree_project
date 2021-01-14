@@ -39,7 +39,7 @@
 
             .wrap {
                 margin-top: 13px;
-                width: 80%;
+                width: 80vw;
             }
 
             .fontHead {
@@ -58,7 +58,9 @@
             }
 
             #card-body {
+                display: grid;
                 margin: auto;
+
             }
 
             .button-2 {
@@ -105,6 +107,9 @@
                 color: #fff;
             }
 
+            #allBooks {
+                display: grid;
+            }
 
         </style>
 
@@ -125,111 +130,121 @@
 
         <div class="wrap">
             <br>
-            <div id="allBooks">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4" style="position: relative">
-                            <img src="https://image.aladin.co.kr/product/25455/72/cover500/k322633613_1.jpg"
-                                 alt="책 표지 사진입니다.">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body fontContent" id="card-body">
-                                <h5 class="card-title" id="bookTitle"> Title &nbsp;&nbsp; <span style="font-size: 11pt;"
-                                                                                                id="bookAuthor"> author </span>
-                                </h5>
-                                <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">This is
-                                    a
-                                    wider card with
-                                    supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <p class="card-text" id="comment" style="font-size: 10pt;">This is a wider card with
-                                    supporting text below as a
-                                    natural lead-in to
-                                    additional content. This content is a little bit longer.This is a wider card with
-                                    supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer additional content. This
-                                    content
-                                    is a little bit longer.This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer</p>
-                                <p class="card-text" style="text-align: center"><small class="text-muted">2021-01-21
-                                    &nbsp;&nbsp;
-                                    <span>평점: &nbsp;</span><span> 4/5 </span></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p><br></p>
-                </div>
-
-            </div>
-
-            <div class="button-2">
-                <div class="eff-2">
-                    <a href="/booksadd"> 책나무 기르기 </a>
-                </div>
-            </div>
-            <div class="button-2">
-                <div class="eff-2">
-                    <a href="/booktree"> 현재 상태 확인하기 </a>
-                </div>
-            </div>
-
-        </div>
-
-        <script>
-            function writeBookInfo() {
-                $.ajax({
-                    type: "GET",
-                    url: "/beantree",
-                    data: {},
-                    success: function (response) {
-                        if (response["result"] == "success") {
-                            let infos = response['infos'];
-                            for (let i = 0; i < infos.length; i++) {
-                                let info = infos[i];
-
-                                let title = info['title'];
-                                let author = info['author'];
-                                let imageUrl = info['image'];
-                                let sentence = info['sentence'];
-                                let comment = info['comment'];
-                                let date = info['date'];
-                                let rate = info['rate'];
-
-                                addBookInfo(title, author, imageUrl, sentence, comment, date, rate);
-                            }
-                        }
-                    }
-                })
-            }
-
-            function addBookInfo(title, author, imageUrl, sentence, comment, date, rate) {
-                let tempHtml = `<div class="card mb-3" style="max-width: 540px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="${imageUrl}"
-                                                 alt="책 표지 사진입니다.">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body fontContent" id="card-body">
-                                                <h5 class="card-title" id="bookTitle" style="font-weight: bold;"> ${title} &nbsp;&nbsp; <span style="font-size: 11pt;"
-                                                                                                                id="bookAuthor"> ${author} </span>
-                                                </h5>
-                                                <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">${sentence}</p>
-                                                <p class="card-text" id="comment" style="font-size: 10pt;">${comment}</p>
-                                                <p class="card-text" style="text-align: center"><small class="text-muted">${date} &nbsp;&nbsp;
-                                                    <span>평점: &nbsp;</span><span> ${rate}/5 </span></small></p>
-                                            </div>
-                                        </div>
+            <div class="container">
+                <div class="row">
+                    <div id="allBooks">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4" style="position: relative">
+                                    <img src="https://image.aladin.co.kr/product/25455/72/cover500/k322633613_1.jpg"
+                                         alt="책 표지 사진입니다.">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body fontContent" id="card-body">
+                                        <h5 class="card-title" id="bookTitle"> Title &nbsp;&nbsp; <span
+                                                style="font-size: 11pt;"
+                                                id="bookAuthor"> author </span>
+                                        </h5>
+                                        <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">
+                                            This is
+                                            a
+                                            wider card with
+                                            supporting text below as a natural lead-in to
+                                            additional content. This content is a little bit longer.</p>
+                                        <p class="card-text" id="comment" style="font-size: 10pt;">This is a wider card
+                                            with
+                                            supporting text below as a
+                                            natural lead-in to
+                                            additional content. This content is a little bit longer.This is a wider card
+                                            with
+                                            supporting text below as a natural lead-in to
+                                            additional content. This content is a little bit longer additional content.
+                                            This
+                                            content
+                                            is a little bit longer.This is a wider card with supporting text below as a
+                                            natural
+                                            lead-in to
+                                            additional content. This content is a little bit longer</p>
+                                        <p class="card-text" style="text-align: center"><small class="text-muted">2021-01-21
+                                            &nbsp;&nbsp;
+                                            <span>평점: &nbsp;</span><span> 4/5 </span></small></p>
                                     </div>
                                 </div>
-                                <div>
-                                    <p><br></p>
-                                </div>`;
-                $('#allBooks').append(tempHtml);
-            }
-        </script>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+                    <div class="button-2">
+                        <div class="eff-2">
+                            <a href="/booksadd"> 책나무 기르기 </a>
+                        </div>
+                    </div>
+                    <div class="button-2">
+                        <div class="eff-2">
+                            <a href="/booktree"> 현재 상태 확인하기 </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <script>
+                    function writeBookInfo() {
+                        $.ajax({
+                            type: "GET",
+                            url: "/beantree",
+                            data: {},
+                            success: function (response) {
+                                if (response["result"] == "success") {
+                                    let infos = response['infos'];
+                                    for (let i = 0; i < infos.length; i++) {
+                                        let info = infos[i];
+
+                                        let title = info['title'];
+                                        let author = info['author'];
+                                        let imageUrl = info['image'];
+                                        let sentence = info['sentence'];
+                                        let comment = info['comment'];
+                                        let date = info['date'];
+                                        let rate = info['rate'];
+
+                                        addBookInfo(title, author, imageUrl, sentence, comment, date, rate);
+                                    }
+                                }
+                            }
+                        })
+                    }
+
+                    function addBookInfo(title, author, imageUrl, sentence, comment, date, rate) {
+                        let tempHtml = `<div class="col">
+                                            <div class="card mb-3" style="max-width: 540px;">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img src="${imageUrl}"
+                                                             alt="책 표지 사진입니다.">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body fontContent" id="card-body">
+                                                            <h5 class="card-title" id="bookTitle" style="font-weight: bold;"> ${title} &nbsp;&nbsp; <span style="font-size: 11pt;"
+                                                                                                                            id="bookAuthor"> ${author} </span>
+                                                            </h5>
+                                                            <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">${sentence}</p>
+                                                            <p class="card-text" id="comment" style="font-size: 10pt;">${comment}</p>
+                                                            <p class="card-text" style="text-align: center"><small class="text-muted">${date} &nbsp;&nbsp;
+                                                                <span>평점: &nbsp;</span><span> ${rate}/5 </span></small></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p><br></p>
+                                            </div>
+                                        </div>`;
+                        $('#allBooks').append(tempHtml);
+                    }
+                </script>
+
 
     </body>
