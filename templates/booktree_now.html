@@ -109,6 +109,9 @@
 
             #allBooks {
                 display: grid;
+                grid-template-columns: 45vw 45vw;
+                margin: auto;
+                width: fit-content;
             }
 
         </style>
@@ -127,12 +130,7 @@
         <div>
             <p class="fontHead head">현재까지 등록한 책 정보</p>
         </div>
-
-        <div class="wrap">
-            <br>
-            <div class="container">
-                <div class="row">
-                    <div id="allBooks">
+        <div id="allBooks">
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0">
                                 <div class="col-md-4" style="position: relative">
@@ -174,6 +172,10 @@
                         </div>
 
                     </div>
+        <div class="wrap">
+            <br>
+            <div class="container">
+                <div class="row">
                 </div>
             </div>
 
