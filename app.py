@@ -30,17 +30,23 @@ def adding_book_tree():
     date = request.form['date']
     rate = request.form['rate']
 
-    url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url, headers=headers)
-    soup = BeautifulSoup(data.text, 'html.parser')
+    image = None
 
-    imageUrl = None
-    image = soup.select_one('#CoverMainImage').get("src")
-    if image is not None:
-        imageUrl = image
+    try:
+        url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
+
+        image = soup.select_one('#CoverMainImage').get("src")
+
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+        data = requests.get(url, headers=headers)
+        soup = BeautifulSoup(data.text, 'html.parser')
+
+        image = soup.select_one('#CoverMainImage').get("src")
+    except Exception:
+        pass
 
 
     book = {
@@ -54,7 +60,6 @@ def adding_book_tree():
         'date': date,
         'rate': rate
     }
-
     db.booktree.insert_one(book)
 
     return jsonify({'result': 'success', 'msg': '잭의 책나무가 한뼘 자라났습니다!'})
@@ -63,7 +68,6 @@ def adding_book_tree():
 @app.route('/beantree', methods=["GET"])
 def books_info():
     infos = list(db.booktree.find({}, {'_id':False}))
-
     return jsonify({'result':'success', 'infos':infos})
 
 
