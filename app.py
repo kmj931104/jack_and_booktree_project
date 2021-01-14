@@ -37,10 +37,14 @@ def adding_book_tree():
     data = requests.get(url, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
+    imageUrl = None
     image = soup.select_one('#CoverMainImage').get("src")
+    if image is not None:
+        imageUrl = image
+
 
     book = {
-        'image': image,
+        'image': imageUrl,
         'title': title,
         'author': author,
         'page': page,
