@@ -31,13 +31,10 @@ def adding_book_tree():
     rate = request.form['rate']
 
 
-    image = None
+    image = "https://cdn.pixabay.com/photo/2019/03/18/15/23/fantasies-4063346_960_720.jpg"
 
     try:
         url = 'https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=' + isbn
-
-        image = soup.select_one('#CoverMainImage').get("src")
-
 
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -45,12 +42,13 @@ def adding_book_tree():
         soup = BeautifulSoup(data.text, 'html.parser')
 
         image = soup.select_one('#CoverMainImage').get("src")
+
     except Exception:
         pass
 
 
     book = {
-        'image': imageUrl,
+        'image': image,
         'title': title,
         'author': author,
         'page': page,
