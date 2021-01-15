@@ -25,6 +25,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
         <title>등록한 책들 확인하기</title>
 
         <style>
@@ -37,10 +39,32 @@
 
             }
 
-            .wrap {
-                margin-top: 13px;
-                width: 80vw;
+            .top-fixed {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 50px;
             }
+
+            .top-content {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                text-align: right;
+            }
+
+            .wrap {
+                margin-top: 50px;
+                padding-top: 20px;
+                padding-bottom: 10px;
+                min-height: 1000px;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+            }
+
 
             .fontHead {
                 font-family: 'Jua', sans-serif;
@@ -50,6 +74,13 @@
 
             .fontContent {
                 font-family: 'Nanum Gothic', sans-serif;
+            }
+
+            button {
+                display: inline-block;
+                width: 50px;
+                height: 45px;
+                margin: 4px 3px;
             }
 
             img {
@@ -95,73 +126,86 @@
                 writeBookInfo();
 
             })
+
+            function moveToMain() {
+                location.href = '/';
+            }
+
+            function moveToAddBooktree() {
+                location.href = '/booksadd';
+            }
+
+             function moveToBookTree() {
+                location.href = '/booktree'
+            }
+
+            function moveToCalendar() {
+                location.href = "/";
+            }
         </script>
     </head>
 
     <body>
-        <div>
-            <p class="fontHead head">현재까지 등록한 책 정보</p>
+        <div class="top-fixed">
+            <div class="top-content">
+                <button type="button" class="btn btn-light" onclick="moveToMain()"><i class="fas fa-home"></i>
+                </button>
+                <button type="button" class="btn btn-light" onclick="moveToBookTree()"><i class="fas fa-tree"></i>
+                </button>
+                <button type="button" class="btn btn-light" onclick="moveToAddBooktree()"><i
+                                class="fas fa-edit"></i>
+                        </button>
+                <button type="button" class="btn btn-light" onclick="moveToCalendar()"><i
+                        class="far fa-calendar"></i>
+                </button>
+            </div>
         </div>
-        <div id="allBooks">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4" style="position: relative">
-                        <img src="https://image.aladin.co.kr/product/25455/72/cover500/k322633613_1.jpg"
-                             alt="책 표지 사진입니다.">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body fontContent" id="card-body">
-                            <h5 class="card-title" id="bookTitle"> Title &nbsp;&nbsp; <span
-                                    style="font-size: 11pt;"
-                                    id="bookAuthor"> author </span>
-                            </h5>
-                            <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">
-                                This is
-                                a
-                                wider card with
-                                supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text" id="comment" style="font-size: 10pt;">This is a wider card
-                                with
-                                supporting text below as a
-                                natural lead-in to
-                                additional content. This content is a little bit longer.This is a wider card
-                                with
-                                supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer additional content.
-                                This
-                                content
-                                is a little bit longer.This is a wider card with supporting text below as a
-                                natural
-                                lead-in to
-                                additional content. This content is a little bit longer</p>
-                            <p class="card-text" style="text-align: center"><small class="text-muted">2021-01-21
-                                &nbsp;&nbsp;
-                                <span>평점: &nbsp;</span><span> 4/5 </span></small></p>
+        <div class="wrap">
+            <div>
+                <p class="fontHead head">현재까지 등록한 책 정보</p>
+            </div>
+            <div id="allBooks">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4" style="position: relative">
+                            <img src="https://image.aladin.co.kr/product/25455/72/cover500/k322633613_1.jpg"
+                                 alt="책 표지 사진입니다.">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body fontContent" id="card-body">
+                                <h5 class="card-title" id="bookTitle"> Title &nbsp;&nbsp; <span
+                                        style="font-size: 11pt;"
+                                        id="bookAuthor"> author </span>
+                                </h5>
+                                <p class="card-text" id="sentence" style="font-style: italic; font-size: 10pt;">
+                                    This is
+                                    a
+                                    wider card with
+                                    supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <p class="card-text" id="comment" style="font-size: 10pt;">This is a wider card
+                                    with
+                                    supporting text below as a
+                                    natural lead-in to
+                                    additional content. This content is a little bit longer.This is a wider card
+                                    with
+                                    supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer additional content.
+                                    This
+                                    content
+                                    is a little bit longer.This is a wider card with supporting text below as a
+                                    natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer</p>
+                                <p class="card-text" style="text-align: center"><small class="text-muted">2021-01-21
+                                    &nbsp;&nbsp;
+                                    <span>평점: &nbsp;</span><span> 4/5 </span></small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <div class="wrap">
-            <br>
-            <div class="container">
-                <div class="row">
-                </div>
             </div>
-
-            <div class="button-2">
-                <div class="eff-2">
-                    <a href="/booksadd"> 책나무 기르기 </a>
-                </div>
-            </div>
-            <div class="button-2">
-                <div class="eff-2">
-                    <a href="/booktree"> 현재 상태 확인하기 </a>
-                </div>
-            </div>
-
         </div>
 
         <script>
