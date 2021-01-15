@@ -21,6 +21,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <title>책나무 기르기 책 추가하기 페이지</title>
         <!-- style -->
         <style type="text/css">
@@ -36,64 +37,47 @@
                 font-weight: initial;
             }
 
-
-            * {
-                background-color: #F6EDDC;
-            }
-
-            .button-2 {
-                width: 180px;
-                height: 50px;
-                border: 3px solid #34495e;
-                float: initial;
-                text-align: center;
-                cursor: pointer;
-                position: relative;
-                left: auto;
-                box-sizing: border-box;
-                overflow: hidden;
-                margin: 50px auto;
-            }
-
-            .button-2 a {
-                font-family: arial;
-                font-size: 16px;
-                color: #34495e;
-                text-decoration: none;
-                line-height: 50px;
-                transition: all .5s ease;
-                z-index: 2;
-                position: relative;
-
-            }
-
-            .eff-2 {
-                width: 180px;
-                height: 50px;
-                top: -50px;
-                background: #34495e;
-                position: absolute;
-                transition: all .5s ease;
-                z-index: 1;
-            }
-
-            .button-2:hover .eff-2 {
+            .top-fixed {
+                position: fixed;
+                left: 0;
                 top: 0;
+                width: 100%;
+                height: 50px;
             }
 
-            .button-2:hover a {
-                color: #fff;
+            .top-content {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                text-align: right;
             }
 
             .wrap {
-                margin-top: 30px;
-                margin-bottom: 30px;
+                min-height: 1000px;
+                margin-top: 50px;
+                padding-top: 20px;
+                padding-bottom: 10px;
+                background-color: #FFE8E8;
+
+                align-items: center;
+            }
+
+            button:not(.button) {
+                display: inline-block;
+                width: 50px;
+                margin: 4px 3px;
             }
 
             .add-box {
                 width: 900px;
                 margin: 0 auto;
                 padding-top: 30px;
+            }
+
+            .button {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 10px;
             }
 
             input[type=text] {
@@ -154,35 +138,67 @@
                 let date = $('#date').val();
                 let rate = $('#rate').val();
 
+                if (title == '' || author == '' || page == '' || isbn == '' || comment == '' || date == '' || rate == '') {
+                    alert('칸을 모두 채워주세요')
+                } else {
 
-                $.ajax({
-                    type: "POST",
-                    url: "/booksadd",
-                    data: {
-                        'title': title,
-                        'author': author,
-                        'page': page,
-                        'isbn': isbn,
-                        'sentence': sentence,
-                        'comment': comment,
-                        'date': date,
-                        'rate': rate
-                    },
-                    success: function (response) {
-                        if (response['result'] == 'success') {
-                            alert(response['msg']);
-                            location.href="/booktree"
+                    $.ajax({
+                        type: "POST",
+                        url: "/booksadd",
+                        data: {
+                            'title': title,
+                            'author': author,
+                            'page': page,
+                            'isbn': isbn,
+                            'sentence': sentence,
+                            'comment': comment,
+                            'date': date,
+                            'rate': rate
+                        },
+                        success: function (response) {
+                            if (response['result'] == 'success') {
+                                alert(response['msg']);
+                                location.href = "/booktree"
+                            }
                         }
-                    }
-                });
+                    });
 
+                }
             }
 
+            function moveToMain() {
+                location.href = '/';
+            }
 
+            function moveToBookNow() {
+                location.href = '/bookregister';
+            }
+
+            function moveToBookTree() {
+                location.href = '/booktree'
+            }
+
+            function moveToCalendar() {
+                location.href = "/";
+            }
         </script>
 
     </head>
     <body>
+        <div class="top-fixed">
+            <div class="top-content">
+                <button type="button" class="btn btn-light" onclick="moveToMain()"><i class="fas fa-home"></i>
+                </button>
+                <button type="button" class="btn btn-light" onclick="moveToBookNow()"><i
+                        class="fas fa-book"></i>
+                </button>
+                <button type="button" class="btn btn-light" onclick="moveToBookTree()"><i class="fas fa-tree"></i>
+                </button>
+                <button type="button" class="btn btn-light" onclick="moveToCalendar()"><i
+                        class="far fa-calendar"></i>
+                </button>
+            </div>
+        </div>
         <div id="adding_book_page" class="wrap">
             <p class="fontHead"> 책을 등록해서 잭의 나무를 성장시켜 보아요♥</p>
             <p class="fontHead" style="font-size: 20pt;"> 잭이 읽은 책은 어떤 책인가요?</p>
@@ -237,12 +253,10 @@
 
                     </select>
                 </div>
-                <div class="button-2">
-                    <div class="eff-2">
-                        <a onclick="addBooktree()">책나무 기르기</a>
-                    </div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-outline-success button" onclick="addBooktree()">책나무 기르기
+                    </button>
                 </div>
-
             </div>
         </div>
 
