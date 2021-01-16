@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
               crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,6 +23,7 @@
 
 
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
 
         <title>책나무 현재 상태 확인하기 페이지</title>
 
@@ -88,6 +90,15 @@
                 padding-top: 5px;
             }
 
+            .modal-header, h4, .close {
+                background-color: #5cb85c;
+                color: white !important;
+                text-align: center;
+            }
+
+            .modal-footer {
+                background-color: #f9f9f9;
+            }
 
         </style>
         <script>
@@ -112,7 +123,6 @@
     <body>
         <div class="top-fixed">
             <div class="top-content">
-
                 <button type="button" class="btn btn-light" onclick="moveToMain()"><i class="fas fa-home"></i>
                 </button>
                 <button type="button" class="btn btn-light" onclick="moveToBookNow()"><i
@@ -124,12 +134,52 @@
                 <button type="button" class="btn btn-light" onclick="moveToCalendar()"><i
                         class="far fa-calendar"></i>
                 </button>
-
-
             </div>
         </div>
         <div id="bean-tree-container">
 
+        </div>
+
+
+        {# SAMPLE       모달을 시도해 봅시다...sample로 얘를 보이게 해보기#}
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:10px 50px;">
+                        <button atype="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div class="modal-body" style="padding:40px 50px;">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="..." alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a
+                                            natural lead-in to additional content. This content is a little bit
+                                            longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                            ago</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p>등록한 책 정보 모두 보러가기
+                            <button type="button" class="btn btn-light" onclick="moveToBookNow()"><i
+                                    class="fas fa-book"></i>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
             $(document).ready(function () {
@@ -163,48 +213,13 @@
 
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
-                                    <h1 class="bean-block-content" style="color: ${textColor};"><a href="#" style="color: black" id="title">${title}</a></h1>
+                                    <h1 class="bean-block-content" style="color: ${textColor};"><a data-toggle="modal" href="#" data-target="#myModal" style="color: black" id="title">${title}</a></h1>
                                 </div>`
                 $('#bean-tree-container').append(tempHtml);
             }
 
             {#modal에 대해서 작성해봅시다#}
 
-            function modalBeanBlockInfo() {
-                let clickTitle = $('#title').val();
-
-                $.ajax({
-                    type: "GET",
-                    url: "/beantree",
-                    data: {},
-                    success: function (response) {
-                        if (response["result"] == "success") {
-                            let infos = response['infos'];
-                            for (let i = 0; i < infos.length; i++) {
-                                let info = infos[i];
-
-                                let title = info['title'];
-                                let author = info['author'];
-                                let imageUrl = info['image'];
-                                let sentence = info['sentence'];
-                                let comment = info['comment'];
-                                let date = info['date'];
-                                let rate = info['rate'];
-
-                                if (clickTitle == title) {
-                                    showModal(title, author, imageUrl, sentence, comment, date, rate);
-                                }
-                            }
-                        }
-                    }
-                })
-            }
-
-            function showModal(title, author, imageUrl, sentence, comment, date, rate) {
-                let tempModal = `<h1>${title}, ${author}, ${imageUrl}, ${sentence}, ${comment}, {$date}, ${rate}</h1>`;
-
-                $('#bean-tree-container').append(tempModal);
-            }
 
         </script>
 
