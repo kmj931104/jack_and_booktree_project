@@ -194,14 +194,17 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body fontContent" id="card-body">
-                                            <h5 class="card-title" id="bookTitle" style="font-weight: bold;"> {{ title_ck }}
+                                            <h5 class="card-title" id="bookTitle"
+                                                style="font-weight: bold;"> {{ title_ck }}
                                                 &nbsp;&nbsp; <span style="font-size: 11pt;"
                                                                    id="bookAuthor"> {{ author_ck }} </span>
                                             </h5>
                                             <p class="card-text" id="sentence"
                                                style="font-style: italic; font-size: 10pt;">{{ sentence_ck }}</p>
-                                            <p class="card-text" id="comment" style="font-size: 10pt;">{{ comment_ck }}</p>
-                                            <p class="card-text" style="text-align: center"><small class="text-muted">{{ date_ck }}
+                                            <p class="card-text" id="comment"
+                                               style="font-size: 10pt;">{{ comment_ck }}</p>
+                                            <p class="card-text" style="text-align: center"><small
+                                                    class="text-muted">{{ date_ck }}
                                                 &nbsp;&nbsp;
                                                 <span>평점: &nbsp;</span><span> {{ rate_ck }}/5 </span></small></p>
                                         </div>
@@ -239,11 +242,15 @@
                                 let title = info['title'];
                                 let page = info['page'];
                                 let height = 0;
-                                    if (page < 100) {
-                                        height = page;
-                                    } else {
-                                        height = page * 0.1;
-                                    }
+                                if (page < 30) {
+                                    height = page;
+                                } else if (30 <= page && page < 70) {
+                                    height = page * 0.6;
+                                } else if (70 <= page && page < 100) {
+                                    height = page * 0.4;
+                                } else {
+                                    height = page * 0.1;
+                                }
                                 let blockColor = "#" + Math.round(Math.random() * 0xFFFFFF).toString(16);
                                 let textColor = "000000";
 
@@ -274,7 +281,7 @@
                     data: {
                         'title': title,
                     },
-                    success: function(response) {
+                    success: function (response) {
 
                     }
                 });
