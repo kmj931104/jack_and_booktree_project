@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import requests
 from pymongo import MongoClient
 from bs4 import BeautifulSoup
+from bson.objectid import ObjectId
 
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
@@ -65,9 +66,18 @@ def adding_book_tree():
 
 @app.route('/beantree', methods=["GET"])
 def books_info():
-    infos = list(db.booktree.find({}, {'_id':False}))
+    infos = list(db.booktree.find({}))
+    for info in infos:
+        info['_id'] = str(info['_id'])
+
     return jsonify({'result':'success', 'infos':infos})
 
+@app.route('/booktree/one', methods=['GET'])
+def get_one_booktree():
+    bookId = request.args.get('bookId')
+    book = db.booktree.find_one({'_id': ObjectId(bookId)})
+    book['_id'] = str(book['_id'])
+    return jsonify({'result':'success', 'book': book})
 
 @app.route('/booktree')
 def book_tree_now():

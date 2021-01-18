@@ -189,7 +189,7 @@
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ image_ck }}"
+                                        <img id="book-cover-img" src="{{ image_ck }}"
                                              alt="책 표지 사진입니다.">
                                     </div>
                                     <div class="col-md-8">
@@ -238,7 +238,7 @@
                             let infos = response['infos'];
                             for (let i = 0; i < infos.length; i++) {
                                 let info = infos[i];
-
+                                let bookId = info['_id'];
                                 let title = info['title'];
                                 let page = info['page'];
                                 let height = 0;
@@ -254,16 +254,16 @@
                                 let blockColor = "#" + Math.round(Math.random() * 0xFFFFFF).toString(16);
                                 let textColor = "000000";
 
-                                addBeanBlock(title, height, blockColor, textColor);
+                                addBeanBlock(bookId, title, height, blockColor, textColor);
                             }
                         }
                     }
                 })
             }
 
-            function addBeanBlock(title, height, blockColor, textColor) {
+            function addBeanBlock(bookId, title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
-                                    <a data-toggle="modal" href="#myModal" style="color: black" onclick="showBookCard()">
+                                    <a data-toggle="modal" href="#myModal" style="color: black" onclick="showBookCard('${bookId}')">
                                         <div class="bean-block-content" style="color: ${textColor}; "id="title">${title}</div>
                                     </a>
                                 </div>`
@@ -272,19 +272,18 @@
 
             {#modal에 대해서 작성해봅시다#}
 
-            function showBookCard() {
-                let title = $('#title').val()
-
+            function showBookCard(bookId) {
                 $.ajax({
-                    type: "POST",
-                    url: "/booktree",
-                    data: {
-                        'title': title,
-                    },
+                    type: "GET",
+                    url: `/booktree/one?bookId=${bookId}`,
+                    data: {},
                     success: function (response) {
-
+                        if (response["result"] == "success") {
+                            let book = response['book'];
+                            $('#bookTitle').text(book.title);
+                        }
                     }
-                });
+                })
             }
         </script>
 
