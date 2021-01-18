@@ -74,6 +74,13 @@ def book_tree_now():
     return render_template('beanTree.html')
 
 
+@app.route('/booktree', methods=['POST'])
+def book_tree_modal():
+    title = request.form['title']
+
+    click_book = db.booktree.find_one({'title':title}, {'_id':False})
+    return render_template(result='success', title_ck=click_book['title'], author_ck=click_book['author'], image_ck=click_book['image'], sentence_ck=click_book['sentence'], comment_ck=click_book['comment'], date_ck=click_book['date'], rate_ck=client['rate'])
+
 @app.route('/bookregister')
 def book_tree_register():
     return render_template('booktree_now.html')

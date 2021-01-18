@@ -18,6 +18,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap" rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
 
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
@@ -55,12 +58,31 @@
 
             #bean-tree-container {
                 min-height: 1000px;
-                margin-top: 50px;
                 background-color: #FFE8E8;
                 display: flex;
                 flex-direction: column-reverse;
                 align-items: center;
                 font-family: 'Jua', sans-serif;
+            }
+
+            .explain {
+                margin-top: 50px;
+                background-color: #FFE8E8;
+                font-family: 'Jua', sans-serif;
+                font-size: 35pt;
+                text-align: center;
+            }
+
+            .detail {
+                display: inline-block;
+                font-size: 10pt;
+                font-family: 'Nanum Gothic', sans-serif;
+                text-align: left;
+                padding-left: 25px;
+            }
+
+            p {
+                margin: 0 0 0 0;
             }
 
             .bean-block {
@@ -140,6 +162,13 @@
                 </button>
             </div>
         </div>
+        <div class="explain">
+            <p style="text-align: center">잭이 지금까지 기른 책나무입니다!</p>
+            <div class="detail">
+                <p>책 제목을 클릭하면 입력한 책의 정보를 볼 수 있어요.</p>
+                <p>물론 우측 상단 나무 아이콘을 클릭해 모든 책에 대한 정보도 볼 수 있답니다.</p>
+            </div>
+        </div>
         <div id="bean-tree-container">
 
         </div>
@@ -156,20 +185,26 @@
 
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="..." alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit
-                                            longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                            ago</small>
-                                        </p>
+                        <div class="col">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="{{ image_ck }}"
+                                             alt="책 표지 사진입니다.">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body fontContent" id="card-body">
+                                            <h5 class="card-title" id="bookTitle" style="font-weight: bold;"> {{ title_ck }}
+                                                &nbsp;&nbsp; <span style="font-size: 11pt;"
+                                                                   id="bookAuthor"> {{ author_ck }} </span>
+                                            </h5>
+                                            <p class="card-text" id="sentence"
+                                               style="font-style: italic; font-size: 10pt;">{{ sentence_ck }}</p>
+                                            <p class="card-text" id="comment" style="font-size: 10pt;">{{ comment_ck }}</p>
+                                            <p class="card-text" style="text-align: center"><small class="text-muted">{{ date_ck }}
+                                                &nbsp;&nbsp;
+                                                <span>평점: &nbsp;</span><span> {{ rate_ck }}/5 </span></small></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -203,8 +238,12 @@
 
                                 let title = info['title'];
                                 let page = info['page'];
-                                let height = page * 0.1;
-
+                                let height = 0;
+                                    if (page < 100) {
+                                        height = page;
+                                    } else {
+                                        height = page * 0.1;
+                                    }
                                 let blockColor = "#" + Math.round(Math.random() * 0xFFFFFF).toString(16);
                                 let textColor = "000000";
 
@@ -217,8 +256,8 @@
 
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
-                                    <a data-toggle="modal" href="#myModal" style="color: black" id="title">
-                                        <div class="bean-block-content" style="color: ${textColor};">${title}</div>
+                                    <a data-toggle="modal" href="#myModal" style="color: black">
+                                        <div class="bean-block-content" style="color: ${textColor}; "id="title">${title}</div>
                                     </a>
                                 </div>`
                 $('#bean-tree-container').append(tempHtml);
@@ -226,7 +265,20 @@
 
             {#modal에 대해서 작성해봅시다#}
 
+            function showBookCard() {
+                let title = $('#title').val()
 
+                $.ajax({
+                    type: "POST",
+                    url: "/booktree",
+                    data: {
+                        'title': title,
+                    },
+                    success: function(response) {
+
+                    }
+                });
+            }
         </script>
 
     </body>
