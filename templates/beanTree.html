@@ -263,7 +263,7 @@
 
             function addBeanBlock(title, height, blockColor, textColor) {
                 let tempHtml = `<div class="bean-block" style="height: ${height}px; background-color: ${blockColor};">
-                                    <a data-toggle="modal" href="#myModal" style="color: black">
+                                    <a data-toggle="modal" href="#myModal" style="color: black" onclick="showBookCard()">
                                         <div class="bean-block-content" style="color: ${textColor}; "id="title">${title}</div>
                                     </a>
                                 </div>`
