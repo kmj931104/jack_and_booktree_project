@@ -4,6 +4,8 @@ from pymongo import MongoClient
 from bs4 import BeautifulSoup
 from bson.objectid import ObjectId
 
+import datetime
+
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
@@ -31,6 +33,7 @@ def adding_book_tree():
     date = request.form['date']
     rate = request.form['rate']
 
+    date = datetime.datetime.strptime(date, '%Y-%m-%d')
 
     image = "https://cdn.pixabay.com/photo/2019/03/18/15/23/fantasies-4063346_960_720.jpg"
 
