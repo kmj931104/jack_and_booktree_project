@@ -66,7 +66,7 @@ def adding_book_tree():
 
 @app.route('/beantree', methods=["GET"])
 def books_info():
-    infos = list(db.booktree.find({}))
+    infos = list(db.booktree.find({}).sort({'date': -1}))
     for info in infos:
         info['_id'] = str(info['_id'])
 
