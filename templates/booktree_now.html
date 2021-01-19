@@ -36,6 +36,7 @@
                 top: 0;
                 width: 100%;
                 height: 50px;
+                z-index: 1;
             }
 
             .top-content {
@@ -60,6 +61,7 @@
                 font-family: 'Jua', sans-serif;
                 font-size: 35pt;
                 text-align: center;
+                margin: 0;
             }
 
             .fontContent {
@@ -107,6 +109,18 @@
                 margin: auto;
 
             }
+
+            .detail {
+                display: inline-block;
+                font-size: 10pt;
+                font-family: 'Nanum Gothic', sans-serif;
+                text-align: left;
+                padding-left: 53px;
+            }
+
+            .detail p {
+                margin: 0 0 0 0;
+            }
         </style>
 
         <script>
@@ -128,10 +142,6 @@
             function moveToBookTree() {
                 location.href = '/booktree'
             }
-
-            function moveToCalendar() {
-                location.href = "/";
-            }
         </script>
     </head>
 
@@ -145,14 +155,16 @@
                 <button type="button" class="btn btn-light" onclick="moveToAddBooktree()"><i
                         class="fas fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-light" onclick="moveToCalendar()"><i
-                        class="far fa-calendar"></i>
-                </button>
             </div>
         </div>
         <div class="wrap">
             <div>
                 <p class="fontHead">현재까지 등록한 모든 책 정보</p>
+                <div class="detail">
+                    <p>현재까지 등록한 책들에 대한 정보들을 카드 형식으로 볼 수 있어요!</p>
+                    <p>우측 상단의 작성 아이콘을 클릭해 읽은 책을 더 추가할 수도 있답니다.</p>
+                    <p>책을 읽은 날짜 순으로 정리되어 있어요.</p>
+                </div>
             </div>
             <div id="allBooks">
                 <div class="card mb-3" style="max-width: 540px;">
