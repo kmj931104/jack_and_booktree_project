@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 
 import datetime
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://kmj:duqhtkfkdgo@13.209.19.24', 27017)
 db = client.dbsparta
 
 app = Flask(__name__)
