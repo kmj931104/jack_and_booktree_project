@@ -69,9 +69,12 @@ def adding_book_tree():
 
 @app.route('/beantree', methods=["GET"])
 def books_info():
-    infos = list(db.booktree.find({}))
+
+    infos = list(db.booktree.find().sort('date', -1))
+
     for info in infos:
         info['_id'] = str(info['_id'])
+        info['date'] = info['date'].strftime('%Y-%m-%d')
 
     return jsonify({'result':'success', 'infos':infos})
 
@@ -80,6 +83,7 @@ def get_one_booktree():
     bookId = request.args.get('bookId')
     book = db.booktree.find_one({'_id': ObjectId(bookId)})
     book['_id'] = str(book['_id'])
+    book['date'] = book['date'].strftime('%Y-%m-%d')
     return jsonify({'result':'success', 'book': book})
 
 
